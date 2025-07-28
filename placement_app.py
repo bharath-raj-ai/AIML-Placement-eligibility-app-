@@ -11,7 +11,7 @@ num_students = 50
 conn = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="900380Bha@",  # ⬅️ change this
+    password="900380Bha@", 
     database="aiml_placement_app"
 )
 cursor = conn.cursor()
@@ -76,10 +76,10 @@ cursor.close()
 conn.close()
 
 st.set_page_config(page_title="Placement Eligibility App", layout="wide")
-st.title("📘 Placement Eligibility App (GUVI Project)")
+st.title(" Placement Eligibility App (GUVI Project)")
 st.write("Check eligibility of students based on placement criteria (SQL filtered)")
 
-# Reconnect DB for interaction
+
 conn = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -88,7 +88,7 @@ conn = mysql.connector.connect(
 )
 
 
-st.sidebar.header("🔍 Set Eligibility Filters")
+st.sidebar.header(" Set Eligibility Filters")
 min_cgpa = st.sidebar.slider("Minimum CGPA", 6.0, 10.0, 7.0)
 min_problems = st.sidebar.slider("Minimum Problems Solved", 0, 300, 50)
 min_comm = st.sidebar.slider("Minimum Communication Score", 0, 100, 60)
@@ -115,15 +115,15 @@ if st.sidebar.button("Find Eligible Students"):
     results = cursor.fetchall()
     df = pd.DataFrame(results)
 
-    st.subheader("🎓 Eligible Students")
+    st.subheader(" Eligible Students")
     if not df.empty:
         st.dataframe(df)
     else:
-        st.warning("❌ No students match the criteria.")
+        st.warning(" No students match the criteria.")
     cursor.close()
 
 st.markdown("---")
-st.subheader("📊 Placement Insights (SQL Based)")
+st.subheader(" Placement Insights (SQL Based)")
 
 insight_queries = {
     "Total Students": "SELECT COUNT(*) AS result FROM students;",
